@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-captioner"
+version = "0.1.0"
+authors = [{ name = "Mobin Yousefi", email = "" }]
+description = "Image Caption Generator with CNN (Xception) + LSTM"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["image captioning", "deep learning", "keras", "lstm", "xception"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "tensorflow>=2.13",
+  "keras>=2.13",
+  "numpy>=1.24",
+  "pillow>=9.4",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "ruff>=0.6.5",
+  "black>=24.8.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = {find = {where = ["src"]}}
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+fix = true
+select = ["E", "F", "I", "UP", "B", "SIM"]
+exclude = [
+  "artifacts",
+  "data",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
